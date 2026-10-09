@@ -20,10 +20,8 @@ jobs:
     steps:
       - name: Obtener el repositorio
         uses: actions/checkout@v4
-      - name: Habilitar GitHub Pages
+      - name: Configurar GitHub Pages
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
       - name: Preparar archivos web
         run: |
           mkdir -p public
