@@ -30,9 +30,9 @@ jobs:
           archive_bytes = base64.b64decode(encoded, validate=True)
           with tempfile.TemporaryDirectory() as work:
               workdir = Path(work)
-              archive = workdir / "ema-source.tar.gz"
+              archive = workdir / "ema-source.tar.xz"
               archive.write_bytes(archive_bytes)
-              with tarfile.open(archive, "r:gz") as tf:
+              with tarfile.open(archive, "r:*") as tf:
                   members = tf.getmembers()
                   if any(Path(m.name).is_absolute() or ".." in Path(m.name).parts for m in members):
                       raise SystemExit("El paquete tiene rutas no permitidas.")
